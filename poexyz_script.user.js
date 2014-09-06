@@ -6,6 +6,7 @@
 // @match      *://poe.xyz.is/search/*
 // @copyright  2014+, argoneus
 // @require http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js
+// @grant GM_setClipboard
 // ==/UserScript==
 
 this.$ = this.jQuery = jQuery.noConflict(true);
