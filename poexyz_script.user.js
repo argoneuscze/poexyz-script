@@ -5,7 +5,7 @@
 // ==UserScript==
 // @name       poexyz Script
 // @namespace  http://www.argoneus.com
-// @version    0.11
+// @version    0.12
 // @description  A script to improve the user experience at poexyz
 // @match      *://poe.xyz.is/search/*
 // @copyright  2014+, argoneus
