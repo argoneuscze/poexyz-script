@@ -11,6 +11,7 @@
 // @copyright  2014+, argoneus
 // @require http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js
 // @grant GM_setClipboard
+// @downloadURL https://github.com/argoneuscze/poexyz-script/raw/stable/poexyz_script.user.js
 // ==/UserScript==
 
 this.$ = this.jQuery = jQuery.noConflict(true);
