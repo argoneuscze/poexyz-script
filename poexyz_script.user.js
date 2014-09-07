@@ -5,7 +5,7 @@
 // ==UserScript==
 // @name       poexyz Script
 // @namespace  http://www.argoneus.com
-// @version    0.12
+// @version    0.13
 // @description  A script to improve the user experience at poexyz
 // @match      *://poe.xyz.is/search/*
 // @copyright  2014+, argoneus
@@ -22,11 +22,16 @@ function injectPage() {
 		var obj = this;
 		$(this).append(" · ");
 		$(this).append($("<a id='clipboard' href='#'>Clipboard</a>").click(function() {
-			var itemNameTag = $(obj).closest("tr.bottom-row").prev().find("td.item-cell h5 a");
+			var sellerNameTag = $(obj).clone().children().remove().end().text();
+			var sellerName = /^.*IGN:\s*(\S*).*$/g.exec(sellerNameTag)[1];
+			var firstLine = $(obj).closest("tr.bottom-row").prev();
+			var itemNameTag = $(firstLine).find("td.item-cell h5 a");
 			var itemName = $(itemNameTag).clone().children().remove().end().text().trim();
 			var itemTable = $(obj).closest("tbody");
-			var sellerName = $(itemTable).attr("data-seller");
 			var itemPrice = $(itemTable).attr("data-buyout");
+			var gemQuality = $(firstLine).find("span.gem-quality").first().text();
+			if (gemQuality != "" && parseInt(gemQuality) > 0)
+				itemName = itemName + " (" + gemQuality + " quality)";
 			if (itemPrice != "")
 				GM_setClipboard("@" + sellerName + " Hello, I would like to buy your " + itemName + " for " + itemPrice + ".");
 			else
